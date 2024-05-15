@@ -1,0 +1,21 @@
+.mynav  .active {
+  opacity: 1;
+  transition: all ease 0.5s;
+  background-color: rgb(255, 255, 255);
+}
+
+.mynav a:hover {
+  opacity: 0.9;
+  background-color: rgb(255, 255, 255);
+  transition: all ease 0.5s;
+}
+
+.mynav a {
+  opacity: 0.5;
+  font-weight: bolder;
+  background-color: rgb(255, 255, 255);
+  transition: all ease 0.5s;
+  background-color: white;
+  border: none;
+
+}

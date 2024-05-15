@@ -1,0 +1,23 @@
+thead {
+    background-color: rgb(255,255,255);
+}
+
+thead {
+    color: black
+}
+
+table th, td {
+   padding: 10px 40px;
+}
+
+tbody tr:hover {
+    background-color: rgba(255,255,255, 0.8);
+    transition: all ease 0.5s;
+}
+
+tbody tr {
+    color: black;
+    background-color: rgba(255,255,255, 0.7);
+    transition: all ease 0.5s;
+    cursor: pointer;
+}
