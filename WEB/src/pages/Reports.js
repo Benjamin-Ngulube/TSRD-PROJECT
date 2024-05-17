@@ -1,47 +1,62 @@
 import { useEffect, useState } from 'react'
 import './Report.css'
-import { get_Data } from '../functions/Api'
+import axios from "axios"
 import { InfinitySpin } from 'react-loader-spinner'
 import image from '../img/wallpaper.jpg'
+import { Link, NavLink } from "react-router-dom"
 
 
 
 export const Reports = () => {
+    const [loader, setLoader] = useState(true)
     const [datastate, setDatastate] = useState(true)
-    useEffect(() => {
-        get_Data()
+    const [recievedData, setRecievedData] = useState([{}])
 
+    const GetDAta = () => {
+        setLoader(true)
+        axios.get("http://192.168.7.183:8000/violations")
+            .then((res) => {
+                if (res.data != []) {
+                    let finalDAta = res.data
+                    setDatastate(finalDAta)
+                        setLoader(false)
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    useEffect(() => {
+        GetDAta()
     }, [])
 
     const RecordData = () => {
         return (
             <>
                 <tbody>
-                    <tr>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                    </tr>
+                    {
+                        datastate.map((e) => {
+                            return (<>
+                                <tr>
+                                    <td>{e.violation_id}</td>
+                                    <td>{e.violation_type}</td>
+                                    <td>{e.vehicle_id}</td>
+                                    <td>{e.location_id} <Link to={`/Map/${e.location_id }`}>Show</Link></td>
+                                    <td>{`${new Date(e.timestamp).getMonth()}-${new Date(e.timestamp).getDate()}-${new Date(e.timestamp).getFullYear()}`}</td>
+                                    <td>{`${new Date(e.timestamp).getHours()}:${new Date(e.timestamp).getMinutes()}`}</td>
+                                    <td>{e.speed_limit}</td>
+                                </tr>
+                            </>)
+                        })
+                    }
                 </tbody>
             </>
         )
     }
     return (
         <>
-            <div style={{background: `url(${image}) no-repeat`, backgroundSize: 'cover', minHeight:'100vh', paddingTop:'100px'}} className="p-2">
+            <div style={{ background: `url(${image}) no-repeat`, backgroundSize: 'cover', minHeight: '100vh', paddingTop: '100px' }} className="p-2">
                 <div className=''>
                     <div style={{ marginTop: '120px' }} className='text-white text-center'>
                         <div>
@@ -57,7 +72,7 @@ export const Reports = () => {
                                         <th>Speed Limit</th>
                                     </tr>
                                 </thead>
-                                {datastate ?
+                                {!loader ?
                                     <RecordData />
                                     :
                                     <td colSpan={7} className='text-center w-100 '>
