@@ -12,12 +12,13 @@ table th, td {
 
 tbody tr:hover {
     background-color: rgba(255,255,255, 0.8);
-    transition: all ease 0.5s;
+    transition: all ease 0.1s;
+    transform: scale(1.01);
 }
 
 tbody tr {
     color: black;
     background-color: rgba(255,255,255, 0.7);
-    transition: all ease 0.5s;
+    transition: all ease 0.1s;
     cursor: pointer;
 }

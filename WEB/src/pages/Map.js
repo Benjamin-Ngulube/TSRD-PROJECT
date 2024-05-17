@@ -5,6 +5,7 @@ export const Maps = () => {
 
     const Thatmap = () => {
         let MainObj = [-12.804936763990627, 28.240294429780192]
+        
         const position = { lat: MainObj[0], lng: MainObj[1] };
 
         return (
