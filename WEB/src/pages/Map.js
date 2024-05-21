@@ -36,7 +36,7 @@ export const Maps = () => {
         const position = { lat: MainObj[0], lng: MainObj[1] };
 
         return (
-            <APIProvider apiKey={"AIzaSyApUNCa_x6MQAAWGCBGaSC3n5GTvdVk2Us"}>
+            <APIProvider apiKey={process.env.REACT_APP_API_KEY}>
                 <Map style={{ height: '100%' }} center={position} defaultZoom={15}>
                     <Marker position={position} />
                 </Map>

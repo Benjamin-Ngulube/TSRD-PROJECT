@@ -14,7 +14,7 @@ export const Reports = () => {
 
     const GetDAta = () => {
         setLoader(true)
-        axios.get("http://192.168.7.183:8000/violations")
+        axios.get(`${process.env.REACT_APP_LOCAL}/violations`)
             .then((res) => {
                 if (res.data != []) {
                     let finalDAta = res.data

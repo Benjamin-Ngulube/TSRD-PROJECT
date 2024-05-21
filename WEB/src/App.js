@@ -13,6 +13,7 @@ function App() {
         
         <div style={{zIndex:'1'}}>
         <Navbar  />
+        
         </div>
         <div style={{minHeight:"80vh", zIndex:'0'}}>
           <Routes>
