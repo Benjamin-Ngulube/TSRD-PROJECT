@@ -7,7 +7,7 @@ export const Home = () => {
                     <div className='text-white text-center'>
                         <h2>Intelligent DTSRA Portal</h2>
                         <div className='justify-content-center d-flex'>
-                            <div className=' text-black p-5'  style={{ width: '40%', marginTop:'10px', backgroundColor:'rgba(255,255,255,0.6)' }}>
+                            <div className=' text-black p-5 fw-bold'  style={{ width: '40%', marginTop:'10px', backgroundColor:'rgba(255,255,255,0.9)' }}>
                                 <p>
                                     An intelligent system that utilizes AI, GPS, and sensor technology to enhance road safety for public transportation in Zambia.
                                 </p>

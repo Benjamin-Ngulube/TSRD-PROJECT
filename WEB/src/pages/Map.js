@@ -1,23 +1,24 @@
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import image from '../img/home_wallpaper_02.jpg'
 import { useParams, useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 import axios from 'axios';
+import { MyContextCont } from '../functions/Context';
 
 export const Maps = () => {
     const [val, setVAl] = useState(false)
     const [loader, setLoader] = useState(true)
-    const [MainObj, setMainObj] = useState([-12.804936763990627, 28.240294429780192])
+    const {MainObj, setMainObj} = useContext(MyContextCont)
 
     let params = useParams()
     useEffect(() => {
         if(params.id){
-            axios.post("http://192.168.7.183:8000/location", {"location_id": 6})
-            .then((res) => {
+            axios.get(`${process.env.REACT_APP_LOCAL}/location/${params.id}`)
+            .then( async (res) => {
                 if(res.data != []){
-                    let maindata = res.data
-                    setMainObj([maindata.latitude, maindata.longitude])
+                    let maindata = await res.data 
+                    setMainObj([maindata.latitude, maindata.longitude]) 
                 }
             })
             .finally(()=>{
@@ -46,11 +47,11 @@ export const Maps = () => {
 
     return (
         <>
-            <div style={{ background: `url(${image}) no-repeat`, backgroundSize: 'cover', height: '100vh', paddingTop: '100px' }}>
-                <div className=" h-100 p-3">
+            <div style={{ backgroundColor:'#ddd', height: '100vh', padding:'120px 50px 10px 50px' }}>
+                <div className=" h-100 shadow rounded" style={{overflow:'hidden'}}>
                     {loader ?
                         <>
-                        <div className='text-center mt-5'>
+                        <div className='text-center mt-5 '>
                             <InfinitySpin
                                 visible={true}
                                 width="200"

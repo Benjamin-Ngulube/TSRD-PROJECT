@@ -1,9 +1,9 @@
 thead {
-    background-color: rgb(255,255,255);
+    background-color: rgb(24, 23, 23);
 }
 
 thead {
-    color: black
+    color: #fff;
 }
 
 table th, td {
@@ -11,14 +11,15 @@ table th, td {
 }
 
 tbody tr:hover {
-    background-color: rgba(255,255,255, 0.8);
+    background-color: rgba(0,0,0, 0.8);
+    color: #fff;
     transition: all ease 0.1s;
     transform: scale(1.01);
 }
 
 tbody tr {
-    color: black;
-    background-color: rgba(255,255,255, 0.7);
+    color: #fff;
+    background-color: rgb(69, 69, 69);
     transition: all ease 0.1s;
     cursor: pointer;
 }
