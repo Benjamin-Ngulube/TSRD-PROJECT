@@ -14,7 +14,7 @@ export const Reports = () => {
     const {datastate, setDatastate} = useContext(MyContextCont)
     const [recievedData, setRecievedData] = useState([{}])
 
-    const socket = io('http://192.168.45.183:8000')
+    const socket = io(process.env.REACT_APP_LOCAL)
     
     socket.on('new_violation',(data)=>{
         if(data){
